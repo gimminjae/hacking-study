@@ -49,3 +49,73 @@ file ./-file06
 file ./-file07
 cat ./-file07
 ```
+other way
+```shell
+cd inhere
+ls
+file * or file ./*
+cat ./-file07
+```
+
+## level 5 -> level 6
+```shell
+cd inhere
+ls
+find * -type f -size 1033c
+cat maybehere07/.file2
+```
+other way
+```shell
+find ./ -type f -size 1033c ! -executable
+```
+
+## level 6 -> level 7
+```shell
+ls -a
+cd /
+find * -user bandit7 -group bandit6 -size -34c 2>/dev/null
+cat var/lib/dpkg/info/bandit7.password
+```
+other way
+```shell
+find / -user bandit7 -group bandit6 -size 33c 2>/dev/null
+```
+## level 7 -> level 8
+```shell
+ls
+cat data.txt | grep millionth
+```
+other way
+```shell
+ls
+vi data.txt
+    [esc]
+    /millionth
+```
+```shell
+grep millionth ./data.txt
+```
+## level 8 -> level 9
+```shell
+ls
+cat data.txt
+sort data.txt | uniq -c # 정렬 후 중복횟수 세기
+```
+other way
+```shell
+sort data.txt | uniq -u # 중복되는 요소를 없앰
+```
+
+## level 9 -> level 10
+```shell
+ls
+file data.txt
+cat data.txt | grep -a "======="
+# grep은 binary 파일을 읽을 수 x
+# -a 옵션을 붙이면 binary 파일을 txt 파일처럼 처리할 수 있다.
+```
+other way
+```shell
+strings data.txt | grep ====
+# strings {file} 파일에서 문자열만 추출한다.
+```
