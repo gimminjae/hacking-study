@@ -1,3 +1,18 @@
+# Intro
+### 준비 사항
+1. Linux (ex: Kali Linux)
+2. Linux Basic
+
+### Rule
+1. bandit 시스템에 접속: ssh
+2. bandit0 -> bandit1 -> .... 비밀번호 찾아 다음 단계로 이동
+
+### ssh 접속 방법
+```
+ssh [계정]@[시스템주소(도메인)] -p [포트번호]
+ssh bandit0@bandit.labs.overthewire.org -p 2220
+```
+# Problem
 ## level 0
 ```shell
 ssh bandit0@bandit.labs.overthewire.org -p 2220
