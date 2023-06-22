@@ -119,3 +119,64 @@ other way
 strings data.txt | grep ====
 # strings {file} 파일에서 문자열만 추출한다.
 ```
+## level 10 -> level 11
+```shell
+ls -a
+base64 --decode data.txt
+```
+## level 11 -> level 12
+```shell
+cat data.txt | tr '[a-z]' '[n-za-m]' | tr '[A-Z]' '[N-ZA-M]'
+```
+other way
+```shell
+# ROT13 알고리즘 사용
+```
+```shell
+cat data.txt | tr '[A-Za-z]' '[N-ZA-Mn-za-m]'
+```
+## level 12 -> level 13
+```shell
+mkdir /tmp/hacksin
+cp data.txt /tmp/hacksin/data.txt
+cd /tmp/hacksin
+xxd -r data.txt > data2
+file data2
+mv data2 data2.gz
+gunzip data2.gz
+file data2
+mv data2 data2.bz2
+bzip2 -d data2.bz2
+file data2
+mv data2 data2.gz
+gunzip data2.gz
+file data2
+mv data2 data2.tar
+tar -xf data2.tar
+file data5.bin
+mv data5.bin data5.tar
+tar -xf data5.tar
+file data6.bin
+mv data6.bin data6.bz2
+bzip2 -d data6.bz2
+file data6
+mv data6 data6.tar
+tar -xf data6.tar
+file data8.bin
+mv data8.bin data7.gz
+gunzip data8.gz
+file data8
+cat data8
+```
+## level 13 -> level 14
+```shell
+ls -a
+cat sshkey.private
+ssh -i sshkey.private bandit14@localhost -p 2220
+cat /etc/bandit_pass/bandit14
+```
+## level 14 -> level 15
+```shell
+nc localhost 30000
+[password] (enter)
+```
