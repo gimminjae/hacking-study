@@ -180,3 +180,46 @@ cat /etc/bandit_pass/bandit14
 nc localhost 30000
 [password] (enter)
 ```
+
+## level 15 -> level 16
+```shell
+openssl s_client -connect localhost:30001
+[password] (enter)
+```
+## level 16 -> level 17
+```shell
+nc -nv -w 1 -z 127.0.0.1 31000-32000 # refused된 port도 출력
+nc -nv -w 1 -z 127.0.0.1 31000-32000 2>&1 | grep succeeded
+openssl s_client -connect localhost:3xxxx
+"
+"
+[password] (enter)
+# copy output
+mkdir /tmp/hacksin
+cd /tmp/hacksin
+vi sshkey # paste output
+chmod 600 sshkey
+ssh -i sshkey bandit17@localhost
+ls /etc/bandit_pass
+cat /etc/bandit_pass/bandit17
+```
+## level 17 -> level 18
+```shell
+ls -a
+diff passwords.new passwords.old
+```
+## level 18 -> level 19
+```shell
+ssh -h
+ssh bandit18@bandit.labs.overthewire.org -p 2220 /bin/sh
+pwd
+ls -a
+cat readme
+```
+
+## level 19 -> level 20
+```shell
+ls -a
+./bandit20-do id
+./bandit20-do cat /etc/bandit_pass/bandit20
+```
