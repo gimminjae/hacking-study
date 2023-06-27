@@ -293,3 +293,100 @@ vi test.sh
 
 ./test.sh | nc localhost 30002 | grep -v "Wrong"
 ```
+
+## level 25 -> level 26
+```shell
+ls -l
+ssh -i bandit26.sshkey bandit26@localhost (-p 2220)
+cat /etc/passwd | grep bandit26
+cat /usr/bin/showtext
+# more이 실행중인 상태에서 vi를 실행시킬 수 있다. vi에서 명령어를 실행할 수 있다.
+# 화면을 줄어 more를 실행 -> vi 실행 -> 명령어 사용
+# more -> v -> :set shell=/bin/bash -> :sh
+# Login!!
+# bandit26으로 들어갈 때 위의 방식으로 들어가야 함
+```
+
+## level 26 -> level 27
+```shell
+ls -al
+./bandit27-do
+./bandit27-do /bin/sh
+cat /etc/bandit_pass/bandit27
+```
+```shell
+./bandit27-do cat /etc/bandit_pass/bandit27
+```
+
+## level 27 -> level 28
+```shell
+cd /tmp
+mkdir hacksin
+cd hacksin
+git clone ssh://bandit27....
+ls
+cd repo
+cat README
+```
+
+## level 28 -> level 29
+```shell
+mkdir /tmp/hacksin
+cd /tmp/hacksin
+git clone ssh://bandit28....
+cd repo
+cat README.md
+git log
+git checkout fi02jg3.... # 이전 커밋으로 돌아감
+cat README.md
+```
+
+## level 29 -> level 30
+```shell
+mkdir /tmp/hacksin
+cd /tmp/hacksin
+git clone ssh://bandit29....
+ls
+cd repo
+cat README.md
+git branch -a
+git checkout remote/origin/dev
+ls
+cat README.md
+```
+
+## level 30 -> level 31
+```shell
+mkdir /tmp/hacksin
+cd /tmp/hacksin
+git clone ssh://bandit29....
+ls
+cd repo
+cat README.md
+# git log, git branch 모두 확인, but nothing...
+git tag
+git show secret
+```
+
+## level 31 -> level 32
+```shell
+mkdir /tmp/hacksin
+cd /tmp/hacksin
+git clone ssh://bandit29....
+ls
+cd repo
+cat README.md
+vi .gitignore
+# remove *.txt
+vi key.txt
+# May I come in?
+git add .
+git commit -m "commit"
+git push origin master
+```
+
+## level 32 -> level 33
+```shell
+$0
+cat /etc/bandit_pass/bandit33
+```
